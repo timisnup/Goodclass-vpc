@@ -1,5 +1,5 @@
 resource "aws_vpc" "goodclass-vpc" {
-  cidr_block       = "10.0.0.0/18"
+  cidr_block       = var.vpc_cidr
   instance_tenancy = "default"
 
   tags = {
@@ -11,7 +11,7 @@ resource "aws_vpc" "goodclass-vpc" {
 # PUBLIC SUBNET
 resource "aws_subnet" "my-public-sub-1" {
   vpc_id     = aws_vpc.goodclass-vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.pub_sub_1_cidr
 
   tags = {
     Name = "my-public-sub-1"
@@ -22,7 +22,7 @@ resource "aws_subnet" "my-public-sub-1" {
 # PUBLIC SUBNET
 resource "aws_subnet" "my-public-sub-2" {
   vpc_id     = aws_vpc.goodclass-vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.pub_sub_2_cidr
 
   tags = {
     Name = "my-public-sub-2"
@@ -33,7 +33,7 @@ resource "aws_subnet" "my-public-sub-2" {
 # PRIVATE SUBNET
 resource "aws_subnet" "my-private-sub-1" {
   vpc_id     = aws_vpc.goodclass-vpc.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.pri_sub_1_cidr
 
   tags = {
     Name = "my-private-sub-1"
@@ -44,7 +44,7 @@ resource "aws_subnet" "my-private-sub-1" {
 # PRIVATE SUBNET
 resource "aws_subnet" "my-private-sub-2" {
   vpc_id     = aws_vpc.goodclass-vpc.id
-  cidr_block = "10.0.4.0/24"
+  cidr_block = var.pri_sub_2_cidr
 
   tags = {
     Name = "my-private-sub-2"
